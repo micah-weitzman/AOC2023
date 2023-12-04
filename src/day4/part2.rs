@@ -1,8 +1,7 @@
 use std::collections::{HashSet, HashMap, VecDeque};
 
-use regex::Regex;
-
 use crate::utils::read_lines;
+
 pub fn main() {
   let raw_cards: Vec<Vec<u32>> = read_lines("./src/day4/input.txt")
                       .iter()

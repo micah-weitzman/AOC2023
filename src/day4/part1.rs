@@ -1,8 +1,7 @@
 use std::collections::HashSet;
 
-use regex::Regex;
-
 use crate::utils::read_lines;
+
 pub fn main() {
   let res: u32 = read_lines("./src/day4/input.txt")
                       .iter()
@@ -12,9 +11,6 @@ pub fn main() {
 }
 
 fn prase_line(line: &String) -> u32 {
-  let caps = Regex::new(r"Card\s+(?<card_no>[0-9]+): ").unwrap().captures(line).unwrap();
-  let card_no = &caps["card_no"];
-
   let s = line.split(": ").last().unwrap().to_owned();
   let all_nums: Vec<HashSet<u32>> = s.split(" | ")
     .map(
@@ -26,8 +22,6 @@ fn prase_line(line: &String) -> u32 {
       )
     )
     .collect();
-
-  // dbg!(all_nums[0].intersection(&all_nums[1]));
 
   let inter = all_nums[0].intersection(&all_nums[1]).count();
   if inter == 0 {
