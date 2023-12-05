@@ -6,8 +6,8 @@ use crate::utils::read_lines;
 // only 12 red cubes, 13 green cubes, and 14 blue cubes
 // sum of all possible
 
-pub fn main() {
-  let res: u32 = read_lines("./src/day2/input.txt")
+pub fn main(filename: &str) {
+  let res: u32 = read_lines(filename)
                       .iter()
                       .map(|line| prase_line(line))
                       .sum();

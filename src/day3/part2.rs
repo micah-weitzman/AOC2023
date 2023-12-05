@@ -2,9 +2,9 @@ use std::collections::HashSet;
 
 use crate::utils::read_lines;
 
-pub fn main() {
+pub fn main(filename: &str) {
   let mut res: u32 = 0;
-  let lines = read_lines("./src/day3/input.txt");
+  let lines = read_lines(filename);
 
   let mut symbols = Vec::<(usize, usize)>::new();
 

@@ -2,8 +2,8 @@ use std::collections::{HashSet, HashMap, VecDeque};
 
 use crate::utils::read_lines;
 
-pub fn main() {
-  let raw_cards: Vec<Vec<u32>> = read_lines("./src/day4/input.txt")
+pub fn main(filename: &str) {
+  let raw_cards: Vec<Vec<u32>> = read_lines(filename)
                       .iter()
                       .enumerate()
                       .map(|(i, line)| prase_line(line, i))
