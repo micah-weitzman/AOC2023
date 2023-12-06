@@ -1,5 +1,4 @@
 #![allow(unused)]
-#![allow(dead_code)]
 
 use std::env;
 use std::path::Path;
@@ -9,7 +8,7 @@ mod day2;
 mod day3;
 mod day4;
 mod day5;
-// mod day6;
+mod day6;
 // mod day7;
 // mod day8;
 // mod day9;
@@ -58,8 +57,8 @@ fn main() {
     ("day4", "part2") => day4::part2::main(filename),
     ("day5", "part1") => day5::part1::main(filename),
     ("day5", "part2") => day5::part2::main(filename),
-    // ("day6", "part1") => day6::part1::main(filename),
-    // ("day6", "part2") => day6::part2::main(filename),
+    ("day6", "part1") => day6::part1::main(filename),
+    ("day6", "part2") => day6::part2::main(filename),
     // ("day7", "part1") => day7::part1::main(filename),
     // ("day7", "part2") => day7::part2::main(filename),
     // ("day8", "part1") => day8::part1::main(filename),
