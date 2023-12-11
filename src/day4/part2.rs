@@ -4,10 +4,10 @@ use crate::utils::read_lines;
 
 pub fn main(filename: &str) {
   let raw_cards: Vec<Vec<u32>> = read_lines(filename)
-                      .iter()
-                      .enumerate()
-                      .map(|(i, line)| prase_line(line, i))
-    .collect();
+                                  .into_iter()
+                                  .enumerate()
+                                  .map(|(i, line)| prase_line(line, i))
+                                  .collect();
 
   let cards_len: usize = raw_cards.len();
 
@@ -24,7 +24,7 @@ pub fn main(filename: &str) {
     num_each_chard.insert(k as u32, 1);
 
     let mut values: VecDeque<u32> = cards_orig.get(&(k as u32)).unwrap().clone();
-    while values.len() != 0 {
+    while !values.is_empty() {
       let card: u32 = values.pop_front().unwrap();
       let val: &mut u32 = num_each_chard.get_mut(&card).unwrap();
       *val += 1;
@@ -37,13 +37,13 @@ pub fn main(filename: &str) {
   println!("{}", res);
 }
 
-fn prase_line(line: &String, i: usize) -> Vec<u32> {
+fn prase_line(line: String, i: usize) -> Vec<u32> {
   let s = line.split(": ").last().unwrap().to_owned();
   let all_nums: Vec<HashSet<u32>> = s.split(" | ")
     .map(
       |side| HashSet::<u32>::from_iter(
           side.replace("  ", " ")
-              .split(" ")
+              .split(' ')
               .filter(|x| !x.is_empty())
               .map(|dig| String::from(dig).parse::<u32>().unwrap())
       )
@@ -56,5 +56,5 @@ fn prase_line(line: &String, i: usize) -> Vec<u32> {
 
   let begin: u32 = i as u32 + 2;
   let end: u32 = i as u32 + 2 + count as u32;
-  return Vec::from_iter(begin..end);
+  Vec::from_iter(begin..end)
 }

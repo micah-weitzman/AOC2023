@@ -48,7 +48,7 @@ pub fn main(filename: &str) {
           seen.insert((row, r));
         }
 
-        let num_str: String = ref_row[l..=r].into_iter().collect();
+        let num_str: String = ref_row[l..=r].iter().collect();
         let num = num_str.parse::<u32>().unwrap();
         res += num;
       }

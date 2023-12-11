@@ -88,7 +88,7 @@ impl Rank {
 }
 
 
-#[derive(Debug, PartialEq, Eq, PartialOrd)]
+#[derive(Debug, PartialEq, Eq)]
 struct Hand {
   rank: Rank,
   cards: Cards,
@@ -96,8 +96,8 @@ struct Hand {
 }
 
 impl Hand {
-  fn from_str(line: &String) -> Self {
-    let mut it = line.split(" ");
+  fn from_str(line: String) -> Self {
+    let mut it = line.split(' ');
     let cards: Cards = it.next().unwrap().chars().map(Card::from_char).collect();
     let bet = it.next().unwrap().parse::<u64>().unwrap();
     let rank = Rank::from_cards(&cards);
@@ -125,9 +125,19 @@ impl Ord for Hand {
   }
 }
 
+impl PartialOrd for Hand {
+  fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+    let n = match self.rank.cmp(&other.rank) {
+      Ordering::Equal => compare_same_hand(&self.cards, &other.cards),
+      ord => ord
+    };
+    Some(n)
+  }
+}
+
 pub fn main(filename: &str) {
   let mut hands: Vec<Hand> = read_lines(filename)
-                              .iter()
+                              .into_iter()
                               .map(Hand::from_str)
                               .collect();
   hands.sort();

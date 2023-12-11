@@ -130,7 +130,7 @@ pub fn main(filename: &str) {
 
     let mut is_open = false;
     let mut is_bar = false;
-    while let Some((x, &c)) = it.next() {
+    for (x, &c) in it {
       if is_loop[y][x] {
         match c {
           '|' => {is_open = !is_open; continue; },
@@ -145,7 +145,7 @@ pub fn main(filename: &str) {
         count += 1;
       }
     }
-    return acc + count;
+    acc + count
   });
 
   println!("{}", res); // 305

@@ -8,14 +8,14 @@ use crate::utils::read_lines;
 
 pub fn main(filename: &str) {
   let res: u32 = read_lines(filename)
-                      .iter()
-                      .map(|line| prase_line(line))
+                      .into_iter()
+                      .map(prase_line)
                       .sum();
   println!("{}", res);
 }
 
-fn prase_line(line: &String) -> u32 {
-  let caps = Regex::new(r"Game (?<game_no>[0-9]+):").unwrap().captures(line).unwrap();
+fn prase_line(line: String) -> u32 {
+  let caps = Regex::new(r"Game (?<game_no>[0-9]+):").unwrap().captures(&line).unwrap();
   let game_no = &caps["game_no"];
 
   let s = line.split(": ").last().unwrap().to_owned();

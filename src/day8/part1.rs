@@ -28,10 +28,8 @@ pub fn main(filename: &str) {
     let start = split.next().unwrap();
     let neigh: Vec<String> = split.next()
                                   .unwrap()
-                                  .replace("(", "")
-                                  .replace(")", "")
-                                  .replace(" ", "")
-                                  .split(",")
+                                  .replace(['(', ')', ' '], "")
+                                  .split(',')
                                   .map(String::from)
                                   .collect();
     let neighbors = Neighbor::new(&neigh[0], &neigh[1]);

@@ -17,7 +17,7 @@ impl Neighbor {
 
 fn gcd(a: u64, b: u64) -> u64 {
   if b == 0 { return a; }
-  return gcd(b, a % b);
+  gcd(b, a % b)
 }
 fn lcm(nums: &[u64]) -> u64 {
   nums.iter().fold(1, |acc, &x|
@@ -38,10 +38,8 @@ pub fn main(filename: &str) {
     let start = split.next().unwrap();
     let neigh: Vec<String> = split.next()
                                   .unwrap()
-                                  .replace("(", "")
-                                  .replace(")", "")
-                                  .replace(" ", "")
-                                  .split(",")
+                                  .replace(['(', ')', ' '], "")
+                                  .split(',')
                                   .map(String::from)
                                   .collect();
     let neighbors = Neighbor::new(&neigh[0], &neigh[1]);

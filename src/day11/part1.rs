@@ -14,34 +14,35 @@ pub fn main(filename: &str) {
     new_map.push(line.clone());
   }
 
-  for i in (0..map[0].len()) {
-    let col: Vec<char> = new_map.iter().map(|line| *line.get(i as usize).unwrap()).collect();
-    // dbg!(&col);
+  for i in (0..map[0].len()).rev() {
+    let col: Vec<char> = new_map.iter()
+                                .map(|line| *line.get(i).unwrap())
+                                .collect();
     if col.iter().all(|c| *c == '.') {
       new_map.iter_mut().for_each(|l| l.insert(i, '.'))
     }
   }
 
-  let mut stars: Vec<(usize, usize)> = vec![];
 
-  for (y,row) in new_map.iter().enumerate() {
-    for (x, c) in row.iter().enumerate() {
-      if *c == '#' {
-        stars.push((x,y));
-      }
-    }
-  }
+  let stars: Vec<(usize, usize)> = new_map.iter()
+                                          .enumerate()
+                                          .flat_map(
+                                            |(y, row)|
+                                              row.iter()
+                                                  .enumerate()
+                                                  .filter_map(move  |(x,&c)| if c == '#' { Some((x,y)) } else {None})
+                                          )
+                                          .collect();
 
-  let mut res = 0;
-
-  for comb in stars.into_iter().combinations(2) {
-    let (x1, y1) = comb[0];
-    let (x2, y2) = comb[1];
-    let dx: i32 = x1 as i32 - x2 as i32;
-    let dy: i32 = y1 as i32 - y2 as i32;
-    dbg!(dx.abs(), dy.abs());
-    res += dx.abs() + dy.abs();
-  }
+  let res = stars.into_iter()
+                      .combinations(2)
+                      .fold(0, |acc, comb| {
+                        let (x1, y1) = comb[0];
+                        let (x2, y2) = comb[1];
+                        let dx: i32 = x1 as i32 - x2 as i32;
+                        let dy: i32 = y1 as i32 - y2 as i32;
+                        acc + dx.abs() + dy.abs()
+                      });
 
   println!("{}", res); // 9329143
 }

@@ -4,19 +4,19 @@ use crate::utils::read_lines;
 
 pub fn main(filename: &str) {
   let res: u32 = read_lines(filename)
-                      .iter()
-                      .map(|line| prase_line(line))
+                      .into_iter()
+                      .map(prase_line)
                       .sum();
   println!("{}", res);
 }
 
-fn prase_line(line: &String) -> u32 {
+fn prase_line(line: String) -> u32 {
   let s = line.split(": ").last().unwrap().to_owned();
   let all_nums: Vec<HashSet<u32>> = s.split(" | ")
     .map(
       |side| HashSet::<u32>::from_iter(
           side.replace("  ", " ")
-              .split(" ")
+              .split(' ')
               .filter(|x| !x.is_empty())
               .map(|dig| String::from(dig).parse::<u32>().unwrap())
       )
@@ -28,5 +28,5 @@ fn prase_line(line: &String) -> u32 {
     return 0;
   }
 
-  return i32::pow(2, (inter - 1) as u32) as u32;
+  i32::pow(2, (inter - 1) as u32) as u32
 }

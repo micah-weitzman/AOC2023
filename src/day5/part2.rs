@@ -24,7 +24,7 @@ pub fn main(filename: &str) {
       seeds_vec = line.split(": ")
                       .last()
                       .unwrap()
-                      .split(" ")
+                      .split(' ')
                       .map(|n| n.parse::<i64>().unwrap())
                       .collect::<Vec<i64>>()
                       .chunks(2)
@@ -33,7 +33,7 @@ pub fn main(filename: &str) {
       seeds_vec.sort_by_key(|k| k.0);
     }
     if line.ends_with("map:") {
-      let vec = match line.split(" ").next().unwrap() {
+      let vec = match line.split(' ').next().unwrap() {
         "seed-to-soil" => &mut seeds_soil,
         "soil-to-fertilizer" => &mut soil_fert,
         "fertilizer-to-water" => &mut fert_water,
@@ -47,7 +47,7 @@ pub fn main(filename: &str) {
       while it.peek().is_some() && !it.peek().unwrap().is_empty() {
         let nums: Vec<i64> = it.next()
                                .unwrap()
-                               .split(" ")
+                               .split(' ')
                                .map(|n| n.parse::<i64>().unwrap())
                                .collect();
         let start = nums[1];

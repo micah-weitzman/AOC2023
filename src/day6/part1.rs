@@ -5,11 +5,11 @@ pub fn main(filename: &str) {
   let lines = read_lines(filename);
   let data: Vec<Vec<u32>> = lines.iter()
                                   .map(|line|
-                                    line.split(":")
+                                    line.split(':')
                                         .last()
                                         .unwrap()
                                         .trim()
-                                        .split(" ")
+                                        .split(' ')
                                         .filter_map(|n| n.trim().parse::<u32>().ok())
                                         .collect()
                               ).collect();

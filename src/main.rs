@@ -33,9 +33,9 @@ mod utils;
 
 fn help_msg() {
   println!("AOC2023 Solutions in rust by Micah");
-  println!("");
+  println!(" ");
   println!("Usage: cargo run <day> <part> (test)?");
-  println!("");
+  println!(" ");
   println!("Notes:");
   println!("    <day> must be in the format 'dayXX' where XX is a number. (ie: day1 or day20)");
   println!("    <part> must either be 'part1' or 'part2'");
@@ -65,7 +65,7 @@ fn main() {
     return;
   }
 
-  if !part.eq("part1") || !part.eq("part2") {
+  if !part.eq("part1") && !part.eq("part2") {
     println!("[\x1b[31mError\x1b[0m] <part> must either be 'part1' or 'part2'");
     return;
   }
