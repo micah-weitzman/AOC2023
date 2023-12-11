@@ -91,11 +91,8 @@ pub fn main(filename: &str) {
   };
 
 
-  // dbg!(&next_moves);
 
   let (mut r_start, mut r_next, mut r_x, mut r_y) = next_moves.pop().unwrap();
-  // let (mut l_start, mut l_next, mut l_x, mut l_y) = next_moves.pop().unwrap();
-
 
   while map.get(r_y).unwrap().get(r_x).unwrap() != &'S' {
 
