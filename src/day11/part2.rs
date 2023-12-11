@@ -21,8 +21,6 @@ pub fn main(filename: &str) {
                             .filter(|&i| map.iter().all(|line| *line.get(i).unwrap() == '.'))
                             .collect();
 
-  let mut stars: Vec<(usize, usize)> = vec![];
-
   let stars: Vec<(usize, usize)> = map.iter()
                                       .enumerate()
                                       .flat_map(

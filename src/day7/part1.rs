@@ -57,7 +57,7 @@ enum Rank {
 
 impl Rank {
   fn from_cards(cards: &Cards) -> Self {
-    let mut hash_map = cards.iter().fold(
+    let hash_map = cards.iter().fold(
       HashMap::<&Card, u8>::new(),
       |mut hm, card| {
         *hm.entry(card).or_insert(0) += 1;

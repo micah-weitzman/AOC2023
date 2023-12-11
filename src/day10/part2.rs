@@ -92,7 +92,9 @@ pub fn main(filename: &str) {
 
 
 
-  let (mut r_start, mut r_next, mut r_x, mut r_y) = next_moves.pop().unwrap();
+  let (mut r_start, _, mut r_x, mut r_y) = next_moves.pop().unwrap();
+
+  let mut r_next: Dir;
 
   while map.get(r_y).unwrap().get(r_x).unwrap() != &'S' {
 
@@ -126,11 +128,9 @@ pub fn main(filename: &str) {
 
     let mut count = 0;
 
-    let mut it = row.iter().enumerate();
-
     let mut is_open = false;
     let mut is_bar = false;
-    for (x, &c) in it {
+    for (x, &c) in  row.iter().enumerate() {
       if is_loop[y][x] {
         match c {
           '|' => {is_open = !is_open; continue; },

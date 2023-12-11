@@ -16,8 +16,6 @@ pub fn main(filename: &str) {
 }
 
 fn prase_line(line: String) -> i32 {
-  let caps = Regex::new(r"Game (?<game_no>[0-9]+):").unwrap().captures(&line).unwrap();
-
   let s = line.split(": ").last().unwrap().to_owned();
   let games: Vec<&str> = s.split("; ").collect();
 

@@ -7,7 +7,7 @@ pub fn main(filename: &str) {
   let map: Vec<Vec<char>> = lines.iter().map(|s| s.chars().collect()).collect();
   let mut new_map: Vec<Vec<char>> = vec![];
 
-  for (i, line) in map.iter().enumerate() {
+  for line in map.iter() {
     if line.iter().all(|c| *c == '.') {
       new_map.push(line.clone());
     }

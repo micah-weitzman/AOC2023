@@ -17,7 +17,7 @@ pub fn main(filename: &str) {
       cards_orig.insert(i as u32 + 1, VecDeque::from(cards));
   }
 
-  let mut res: u32 = 0;
+
   let mut num_each_chard: HashMap<u32, u32> = HashMap::new();
 
   for k in (1..=cards_len).rev() {
@@ -32,7 +32,7 @@ pub fn main(filename: &str) {
     }
   }
 
-  res = num_each_chard.values().sum();
+  let res: u32 = num_each_chard.values().sum();
 
   println!("{}", res);
 }

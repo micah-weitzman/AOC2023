@@ -1,4 +1,4 @@
-#![allow(unused)]
+// #![allow(unused)]
 
 use std::env;
 use std::path::Path;
@@ -79,7 +79,7 @@ fn main() {
 
   env::set_current_dir(
     Path::new("./src").join(format!("day{}", day_num))
-  );
+  ).unwrap();
 
   match (day_num, part) {
     (1, "part1") => day1::part1::main(filename),

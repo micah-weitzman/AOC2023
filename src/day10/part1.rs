@@ -72,8 +72,9 @@ pub fn main(filename: &str) {
 
 
 
-  let (mut r_start, mut r_next, mut r_x, mut r_y) = next_moves.pop().unwrap();
+  let (mut r_start, _, mut r_x, mut r_y) = next_moves.pop().unwrap();
 
+  let mut r_next: Dir;
   let mut r_dist = 0;
 
   while map.get(r_y).unwrap().get(r_x).unwrap() != &'S' {
