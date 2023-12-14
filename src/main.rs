@@ -14,7 +14,7 @@ mod day9;
 mod day10;
 mod day11;
 mod day12;
-// mod day13;
+mod day13;
 // mod day14;
 // mod day15;
 // mod day16;
@@ -105,8 +105,8 @@ fn main() {
     (11, "part2") => day11::part2::main(filename),
     (12, "part1") => day12::part1::main(filename),
     (12, "part2") => day12::part2::main(filename),
-    // (13, "part1") => day13::part1::main(filename),
-    // (13, "part2") => day13::part2::main(filename),
+    (13, "part1") => day13::part1::main(filename),
+    (13, "part2") => day13::part2::main(filename),
     // (14, "part1") => day14::part1::main(filename),
     // (14, "part2") => day14::part2::main(filename),
     // (15, "part1") => day15::part1::main(filename),
